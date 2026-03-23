@@ -10,6 +10,10 @@ body:has(.authPage) {
   min-height: 100vh;
   padding: 1rem;
   background: none; /* use body background only when on auth (sign-in, success, redirect) */
+  background-image: url(../../../assets/images/inital_img.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 /* Avoid a second background: only .authPage/body have background; inner containers are transparent */
@@ -26,7 +30,7 @@ body:has(.authPage) {
 
 .authContent {
   width: 100%;
-  max-width: 550px;
+  max-width: 610px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,9 +79,14 @@ body:has(.authPage) {
 
 .loginForm {
   width: 100%;
-  padding: 1.3em 1.5em 1.5em 1.5em;
+  padding: 3em;
   border-radius: 5px;
   /* Single background: use .authPage only; no card background here */
+}
+
+.companyLogo {
+  display: flex;
+  justify-content: center;
 }
 
 .emailData,
@@ -132,10 +141,11 @@ body:has(.authPage) {
 }
 
 .loginCaption {
-  margin: 0 0 10px 0px;
+  margin: 10px 0 10px 0px;
   text-align: center;
-  color: grey;
-  font-size: 0.6em;
+  color: black;
+  font-size: 1em;
+  font-weight: 700;
 }
 
 .forgotPassword,
@@ -160,8 +170,9 @@ body:has(.authPage) {
   font-weight: 500;
 }
 
-.forgotPassword span {
-  color: #7b7a7a;
+.forgotPassword span,
+.forgot-password span {
+  color: var(--main-auth-button-color);
 }
 
 .login-btn {
@@ -287,9 +298,17 @@ body:has(.authPage) {
 }
 
 .companyContent {
-    margin-top: 2em;
+  margin-top: 2em;
 }
 
 .contentTwo {
-    margin: 1em 0 0 0;
+  margin: 1em 0 0 0;
+}
+
+.poweredBy {
+  margin: 2em 0 0.5em 0;
+}
+
+.copyright {
+  font-weight: 600;
 }

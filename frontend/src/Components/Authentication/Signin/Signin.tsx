@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./signin.css";
 import poweredBy from "../../../assets/images/poweredby.svg"
+import companyLogo from "../../../assets/images/massive-capital-logo.png"
 
 const Signin = () => {
   document.title = "Investor Portal | Signin";
@@ -50,7 +51,10 @@ const Signin = () => {
           <div className="loginData">
             <div className="loginCred">
               <div className="loginForm">
-                <p className="loginHeading">Welcome</p>
+                {/* <p className="loginHeading">Welcome</p> */}
+                <p className="companyLogo">
+                <img src={companyLogo} alt="company logo" style={{width:'15em'}} />
+                </p>
                 <p className="loginCaption">Sign in to your account</p>
                 <form action="" autoComplete="off" onSubmit={getUser}>
                   <div className="emailData">
@@ -177,9 +181,9 @@ const Signin = () => {
                         Please log in to the Investor Portal using your email
                         address and password. If you have trouble logging in,
                         you can reset your password using the{" "}
-                        <Link to="/forgotPassword">
+                        <Link to="/forgotPassword" className="forgot-password">
                           <span>Forgot Password?</span>
-                        </Link>
+                        </Link>{" "}
                         link.
                       </p>
                       <div className="poweredBy">
