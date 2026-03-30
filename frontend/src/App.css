@@ -1,5 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
+/* Prevent horizontal scroll: full-width chain + clip (focus rings, vw quirks) */
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+#root {
+  max-width: 100%;
+  min-width: 0;
+  min-height: 100svh;
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +28,9 @@
 
 :root {
   --main-auth-button-color: #155abf;
+  /* --main-auth-button-color: black; */
   --ui-border-radius: 5px;
+  --ui-button-border-radius: 25px;
   --background-color-onboarding: #eff6ff;
   --edit-button-background: #bde0fe;
   --edit-button-color: black;
@@ -17,20 +38,48 @@
   --active-status-background: #d8f3dc;
   --inactive-status-background: #ffccd5;
   --card-onboarding-bg-color: #f5f7fa;
-  --bg-colour-main: #f3f6fb;
+  /* Logged-in shell: sidebar + top bar slightly lighter than main page */
+  --page-background: #f5f5f5;
+  --bg-colour-main: #f0f0f0;
   --light-gray-color: #64748b;
+  --sidebar-bg-color: var(--page-background);
+  --sidebar-aside-bg: #f0f0f0;
+  --sidebar-text-color: #282828;
+  --sidebar-active: #dfdfdf;
+  --font-size: 14px;
+
+  /* Portal layout (page_layout.css, TopNavBar, deals UI) */
+  --portal-page-bg: #f0f0f0;
+  --portal-chrome-bg: #f5f5f5;
+  --portal-surface: #ffffff;
+  --portal-border: #e5e5e5;
+  --portal-text: #282828;
+  --portal-text-muted: #64748b;
+  --portal-text-secondary: #525252;
+  --portal-toggle-track: #ebebeb;
+  --portal-primary: black;
+  --portal-primary-hover: black;
+  --portal-primary-soft: #e8eef8;
+  --portal-card-radius: 8px;
+  --portal-pill-radius: 9999px;
+  --portal-icon-box-radius: 10px;
+  --portal-status-raising-text: #166534;
+  --portal-status-raising-bg: #dcfce7;
+  --portal-danger: #b91c1c;
 }
 
-input {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   border: 1px solid lightgray;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   padding: 5px;
   font-size: 16px;
   height: 40px;
 }
 button {
   font-family: "Inter", sans-serif;
-  border-radius: var(--ui-border-radius);
+  border-radius: var(--ui-button-border-radius);
 }
 
 /* All textareas: 5px radius, no resize */
@@ -80,7 +129,7 @@ select:focus {
   cursor: pointer;
   color: white;
   width: fit-content;
-  border-radius: var(--ui-border-radius);
+  border-radius: var(--ui-button-border-radius);
   display: flex;
   justify-content: center;
   align-content: center;
@@ -171,12 +220,7 @@ select option {
   align-items: center;
 }
 
-/* Global: all buttons and cards use 5px border radius */
-button,
-input[type="submit"],
-input[type="button"],
-[class*="Btn"],
-[class*="_btn"],
+/* Global: cards and panels use standard border radius */
 .card,
 .cards,
 .card_vendor,
@@ -208,6 +252,18 @@ input[type="button"],
   border-radius: var(--ui-border-radius) !important;
 }
 
+/* All buttons: pill radius (includes class-based controls e.g. *_btn, login-btn) */
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+.login-btn,
+.invite_user_btn,
+[class*="_btn"],
+[class*="Btn"] {
+  border-radius: var(--ui-button-border-radius) !important;
+}
+
 /* Toggles: 25px border radius (switch track only) */
 .vendor_overview_toggle,
 .product_profile_toggle,
@@ -225,7 +281,7 @@ input[type="button"],
   background: none;
   cursor: pointer;
   color: #64748b;
-  border-radius: 5px;
+  border-radius: var(--ui-button-border-radius);
 }
 
 .modal_close_btn:hover {
@@ -241,4 +297,11 @@ input[type="button"],
 .modal_close_btn svg {
   flex-shrink: 0;
   color: inherit;
+}
+
+
+.redirecting_links {
+  color: var(--main-auth-button-color);
+  margin: 0 0.5em 0 0;
+  text-decoration: none;
 }
